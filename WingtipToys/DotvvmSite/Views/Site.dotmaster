@@ -1,0 +1,84 @@
+﻿@viewModel WingtipToys.DotvvmSite.ViewModels.SiteViewModel, WingtipToys
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{resource: PageTitle}} - Wingtip Toys</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+        
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/">Wingtip Toys</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <dot:RoleView Roles="Administrator">
+                            <a href="~/Admin/AdminPage">Admin</a>
+                        </dot:RoleView>
+                    </li>
+                    <li><a href="~/">Home</a></li>
+                    <li><a href="~/About">About</a></li>
+                    <li><a href="~/Contact">Contact</a></li>
+                    <li><a href="~/ProductList">Products</a></li>
+                    <li><a href="~/ShoppingCart" ID="cartCount">Cart ({{value: CartCount}})</a></li>
+                </ul>
+                <dot:AuthenticatedView>
+                    <NotAuthenticatedTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="~/Account/Register">Register</a></li>
+                            <li><a href="~/Account/Login">Log in</a></li>
+                        </ul>
+                    </NotAuthenticatedTemplate>
+                    <AuthenticatedTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="~/Account/Manage" title="Manage your account">Hello, {{resource: Context.HttpContext.User.Identity.Name}} !</a></li>
+                            <li>
+                                <dot:LinkButton Text="Log off" Click="{command: LogOut()}" />
+                            </li>
+                        </ul>
+                    </AuthenticatedTemplate>
+                </dot:AuthenticatedView>
+            </div>
+        </div>
+    </div>
+    <div id="TitleContent" style="text-align: center">
+        <a href="~/">
+            <img ID="Image1" src="~/Images/logo.jpg" BorderStyle="None" />
+        </a>
+        <br />
+    </div>
+    <div id="CategoryMenu" style="text-align: center">
+        <dot:Repeater DataSource="{value: Categories}">
+            <ItemTemplate>
+                <b style="font-size: large; font-style: normal">
+                    <a href="{value: "category/" + CategoryName}">
+                        {{value: CategoryName}}
+                    </a>
+                </b>
+            </ItemTemplate>
+            <SeparatorTemplate>  |  </SeparatorTemplate>
+        </dot:Repeater>
+    </div>
+    <div class="container body-content">
+        <dot:ContentPlaceHolder ID="MainContent">
+        </dot:ContentPlaceHolder>
+        <hr />
+        <footer>
+            <p>&copy; {{resource: DateTime.Now.Year}} - Wingtip Toys</p>
+        </footer>
+    </div>
+</body>
+</html>

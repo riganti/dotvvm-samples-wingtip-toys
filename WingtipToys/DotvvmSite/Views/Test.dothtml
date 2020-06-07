@@ -1,0 +1,9 @@
+﻿@viewModel WingtipToys.DotvvmSite.ViewModels.TestViewModel, WingtipToys
+@masterPage DotvvmSite/Views/Site.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <p>Hello from DotVVM!</p>
+
+</dot:Content>
+

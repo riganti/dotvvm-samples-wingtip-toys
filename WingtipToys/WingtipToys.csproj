@@ -290,6 +290,8 @@
     <Content Include="Catalog\Images\Thumbs\Thumbs.db" />
     <Content Include="Checkout\Web.config" />
     <Content Include="Admin\Web.config" />
+    <Content Include="DotvvmSite\Views\Site.dotmaster" />
+    <Content Include="DotvvmSite\Views\Test.dothtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ProductDetails.aspx" />
     <Content Include="ProductList.aspx" />
@@ -448,6 +450,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DotvvmSite\DotvvmStartup.cs" />
+    <Compile Include="DotvvmSite\ViewModels\SiteViewModel.cs" />
+    <Compile Include="DotvvmSite\ViewModels\TestViewModel.cs" />
     <Compile Include="ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
