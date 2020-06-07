@@ -21,7 +21,8 @@ namespace WingtipToys
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // Initialize the product database.
-            Database.SetInitializer(new ProductDatabaseInitializer());
+            Database.SetInitializer<ProductContext>(new ProductDatabaseInitializer());
+            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
 
             // Create the administrator role and user.
             RoleActions roleActions = new RoleActions();
